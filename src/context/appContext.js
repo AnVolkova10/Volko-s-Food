@@ -9,6 +9,7 @@ export const AppContext = createContext(initialContext);
 export const ContextProviderApp = (props) => {
   //Ejemplo
   const [appState, setAppState] = useReducer(Reducer, initialContext);
+  const [showModal, setShowModal] = useState(false);
 
   //Ejemplo
   const settingState = () => {
@@ -24,6 +25,8 @@ export const ContextProviderApp = (props) => {
         appState,
         setAppState,
         settingState,
+        showModal,
+        setShowModal,
       }}
     >
       {props.children}

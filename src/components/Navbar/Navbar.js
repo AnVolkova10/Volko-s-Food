@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
 import './NavbarStyles.scss';
 import { navItems } from '../../helpers/helpers';
+import { useContext } from 'react';
+import { AppContext } from '../../context/appContext';
 
-export function Navbar() {
+export const Navbar = ({}) => {
   const [menuOpen, setMenuOpen] = useState(false);
+  const { showModal, setShowModal } = useContext(AppContext);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -22,6 +25,10 @@ export function Navbar() {
           menuOpen ? 'show' : ''
         }`}
       >
+        <button onClick={() => setShowModal(!showModal)}>
+          Agregar <br />
+          Ingrediente/Receta
+        </button>
         {navItems.map((item, index) => (
           <li key={index} className={item.active ? 'active' : ''}>
             <a href={item.href}>{item.label}</a>
@@ -38,4 +45,4 @@ export function Navbar() {
       </button>
     </nav>
   );
-}
+};
